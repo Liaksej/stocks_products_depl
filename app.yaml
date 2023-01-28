@@ -1,0 +1,16 @@
+application: first-project-liak1
+version: 1
+runtime: python311
+
+threadsafe: yes
+
+instance_class: B1
+
+entrypoint: gunicorn -b :$8000 stocks_products:app
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /.*
+  script: auto
